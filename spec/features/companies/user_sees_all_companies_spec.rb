@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe "User sees all companies" do
-  scenario "a user sees all the companies" do
-    company = Company.create!(name: "ESPN")
-    company_two = Company.create!(name: "Disney")
+  scenario "and their content appears" do
+    company = create(:company, name: "ESPN")
+    company_two = create(:company, name: "Disney")
 
     visit companies_path
 

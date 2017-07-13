@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "User deletes existing company" do
-  scenario "a user can delete a company" do
-    company = Company.create(name: "ESPN")
+  scenario "and it's no longer there" do
+    company = create(:company, name: "ESPN")
     visit companies_path
 
     within(".company_#{company.id}") do
