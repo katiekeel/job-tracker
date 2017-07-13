@@ -12,7 +12,7 @@ describe "User edits an existing job and" do
     fill_in "job[level_of_interest]", with: 15
     fill_in "job[city]", with: "HappyLand"
 
-    click_button "Update"
+    click_button "Update Job"
 
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{job.id}")
     expect(page).to have_content("Happy Meal Inspector")
