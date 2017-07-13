@@ -1,0 +1,5 @@
+<h4><%= link_to "Back to All Jobs for #{@company.name}", company_jobs_path(@company) %></h4>
+
+<h2>Edit <%= @job.title %> here!</h2>
+
+<%= render partial: "form" %>
