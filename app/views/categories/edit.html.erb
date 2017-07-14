@@ -1,0 +1,6 @@
+<h4><%= link_to "Back to All Categories", categories_path %></h4>
+<h4><%= link_to "Back to #{@category.title}", category_path(@category) %></h4>
+
+<h2>Edit <%= @category.title %> here!</h2>
+
+<%= render partial: "form" %>

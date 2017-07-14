@@ -1,0 +1,9 @@
+<h4><%= link_to "Back to All Categories", categories_path %></h4>
+
+All Jobs for <strong><%= @category.title %></strong>
+
+<h4><%= link_to "Create A New Job for #{category.title}", new_job_path %>
+
+<% @category.jobs.each do |job| %>
+  <ul><%= job.title %></ul>
+<% end %>

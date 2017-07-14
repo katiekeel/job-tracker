@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  belongs_to :company, :category, :polymorphic => true
 
   def index
     @company = Company.find(params[:company_id])

@@ -5,8 +5,6 @@ Rails.application.routes.draw do
     resources :jobs
   end
 
-  resources :categories do
-    resources :jobs
-  end
+  resources :categories
 
 end

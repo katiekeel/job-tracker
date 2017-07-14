@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "User visits all companies" do
   scenario "and sees their content" do
     company = create(:company, name: "ESPN")
-    
+
     visit companies_path
 
     expect(page).to have_content("ESPN")

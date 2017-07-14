@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @category = Category.find(params[:category_id])
-    @jobs = category.jobs
+    @categories = Category.all
   end
 
   def new
@@ -12,7 +11,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:success] = "#{@category.title} added!"
+      flash[:success] = "#{@category.title} added to categories!"
       redirect_to category_path(@category)
     else
       render :new
@@ -20,8 +19,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    category = Category.find(params[:id])
-    redirect_to category_jobs_path(category)
+    @category = Category.find(params[:id])
   end
 
   def edit
@@ -43,14 +41,14 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
     category.destroy
 
-    flash[:success] = "#{category.name} was successfully deleted!"
+    flash[:success] = "#{category.title} was successfully deleted!"
     redirect_to categories_path
   end
 
 
   private
 
-  def company_params
+  def category_params
     params.require(:category).permit(:title)
   end
 
