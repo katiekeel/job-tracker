@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-  belongs_to :company, :category, :polymorphic => true
 
   def index
     @company = Company.find(params[:company_id])
@@ -55,7 +54,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 
 end

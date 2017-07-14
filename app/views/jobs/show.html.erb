@@ -1,11 +1,11 @@
-<h4><%= link_to "Back to #{@job.company.name} Jobs", company_path(@job.company) %></h4>
-
 <h3><%= @job.title %></h3>
 
 <h4>Description:</h4> <ul><%= @job.description %></ul>
+
+<h4>Category:</h4> <ul><%= link_to @job.category.title, category_path(@job.category) %></ul>
 
 <h4>Level of Interest:</h4> <ul><%= @job.level_of_interest %></ul>
 
 <h4>City:</h4> <ul><%= @job.city %></ul>
 
-<h4>Company:</h4> <ul><%= @job.company.name %></ul>
+<h4>Company:</h4> <ul><%= link_to @job.company.name, company_path(@job.company) %></ul>

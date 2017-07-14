@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(version: 7) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_jobs", id: false, force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "job_id", null: false
-    t.index ["category_id", "job_id"], name: "index_categories_jobs_on_category_id_and_job_id"
-    t.index ["job_id", "category_id"], name: "index_categories_jobs_on_job_id_and_category_id"
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -42,8 +35,11 @@ ActiveRecord::Schema.define(version: 7) do
     t.datetime "updated_at", null: false
     t.bigint "company_id"
     t.string "city"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
+  add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "companies"
 end
