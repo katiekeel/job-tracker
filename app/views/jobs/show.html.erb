@@ -11,3 +11,11 @@
 <h4>City:</h4> <ul><%= @job.city %></ul>
 
 <h4>Company:</h4> <ul><%= link_to @job.company.name, company_path(@job.company) %></ul>
+
+<h4>Comments:</h4>
+  <ol>
+    <% @job.comments.each do |comment| %>
+      <li><%= comment.content %> [<%= link_to "Edit", edit_company_job_comment_path(@job.company, @job, comment)%>  |  <%= link_to "Delete", company_job_comment_path(@job.company, @job, comment), method: :delete%>]</li>
+    <% end %>
+  </ol>
+  <%= link_to "New Comment", new_company_job_comment_path(@job.company, @job) %>

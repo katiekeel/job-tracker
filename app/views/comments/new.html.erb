@@ -1,0 +1,5 @@
+<h4><%= link_to "Back to #{@job.title}", company_job_path(@company, @job) %></h4>
+
+<h2>Create a new comment for <%= @job.title %> here!</h2>
+
+<%= render partial: "form" %>
