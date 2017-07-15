@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "User sees a specific job" do
   scenario "for a specific company" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_job_path(company, job)
 
@@ -14,7 +15,8 @@ describe "User sees a specific job" do
 
   scenario "and clicks link back to company" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_job_path(company, job)
 

@@ -4,7 +4,8 @@ describe "User deletes existing job and" do
 
   scenario "it's no longer on the jobs page for that company" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_path(company)
 

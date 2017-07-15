@@ -3,8 +3,9 @@ require 'rails_helper'
 describe "User sees all jobs" do
   scenario "for a specific company" do
     company = create(:company)
-    generic_job = create(:job, company: company)
-    specific_job = create(:job, title: "Master Chicken Sexer", company: company)
+    category = create(:category)
+    generic_job = create(:job, company: company, category: category)
+    specific_job = create(:job, title: "Master Chicken Sexer", company: company, category: category)
 
     visit company_path(company)
 
@@ -15,7 +16,8 @@ describe "User sees all jobs" do
 
   scenario "and clicks link back to companies" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_path(company)
 
@@ -26,22 +28,24 @@ describe "User sees all jobs" do
 
   scenario "and clicks link to create a new job" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_path(company)
 
-    click_link "Create A New Job for #{company.name}"
+    click_link "New Job"
 
     expect(current_path).to eq "/companies/#{company.id}/jobs/new"
   end
 
   scenario "and clicks link to edit company" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_path(company)
 
-    click_link "Edit #{company.name}"
+    click_link "Edit Company"
 
     expect(current_path).to eq "/companies/#{company.id}/edit"
   end
@@ -49,7 +53,8 @@ describe "User sees all jobs" do
 
   scenario "and clicks link to a job" do
     company = create(:company)
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit company_path(company)
 

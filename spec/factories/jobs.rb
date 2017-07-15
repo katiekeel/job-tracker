@@ -7,5 +7,6 @@ FactoryGirl.define do
     level_of_interest 10000
     city "Chickenville"
     company
+    category
   end
 end

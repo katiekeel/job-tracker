@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "User edits an existing job and" do
   scenario "the new content appears" do
     company = create(:company, name: "ESPN")
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit edit_company_job_path(company, job)
 
@@ -27,7 +28,8 @@ describe "User edits an existing job and" do
 
   scenario "and clicks link back to that company" do
     company = create(:company, name: "ESPN")
-    job = create(:job, company: company)
+    category = create(:category)
+    job = create(:job, company: company, category: category)
 
     visit edit_company_job_path(company, job)
 

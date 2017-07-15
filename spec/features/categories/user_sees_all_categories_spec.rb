@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "User visits all categories" do
   scenario "and sees their content" do
-    categories = create(:category)
+    category = create(:category)
 
     visit categories_path
 
@@ -10,17 +10,17 @@ describe "User visits all categories" do
   end
 
   scenario "and clicks link to see first category" do
-    categories = create(:category)
+    category = create(:category)
 
     visit categories_path
 
-    click_link "#{category.name}"
+    click_link "#{category.title}"
 
-    expect(current_path).to eq "/categories/#{category.id}/jobs"
+    expect(current_path).to eq "/categories/#{category.id}"
   end
 
   scenario "and clicks link to edit first category" do
-    categories = create(:category)
+    category = create(:category)
 
     visit categories_path
 
@@ -30,14 +30,14 @@ describe "User visits all categories" do
   end
 
   scenario "and clicks link to delete first category" do
-    categories = create(:category)
+    category = create(:category)
 
     visit categories_path
 
     click_link "Delete"
 
     expect(current_path).to eq "/categories"
-    expect(page).to_not have_link("#{category.name}")
+    expect(page).to_not have_link("#{category.title}")
   end
 
   scenario "and clicks link to create a new company" do

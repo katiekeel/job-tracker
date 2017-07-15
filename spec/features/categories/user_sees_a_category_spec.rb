@@ -14,24 +14,13 @@ describe "User sees one category" do
 
   scenario "and it shows its jobs" do
     category = create(:category)
-    job = create(:job)
-    job.categories << category
+    job = create(:job, category: category)
 
     visit category_path(category)
 
     expect(current_path).to eq("/categories/#{category.id}")
     expect(page).to have_content("#{category.title}")
     expect(page).to have_content("#{job.title}")
-  end
-
-  scenario "and clicks link to create a new job" do
-    category = create(:category)
-
-    visit category_path(category)
-
-    click_link "Create A New Job for #{category.title}"
-
-    expect(current_path).to eq "/jobs/new"
   end
 
   scenario "and clicks link to a job" do
@@ -42,7 +31,7 @@ describe "User sees one category" do
 
     click_link "#{job.title}"
 
-    expect(current_path).to eq "/categories/#{category.id}/jobs/#{job.id}"
+    expect(current_path).to eq "/companies/#{job.company.id}/jobs/#{job.id}"
   end
 
   scenario "and clicks link to edit category" do
@@ -50,7 +39,7 @@ describe "User sees one category" do
 
     visit category_path(category)
 
-    click_link "Edit #{category.name}"
+    click_link "Edit Category"
 
     expect(current_path).to eq "/categories/#{category.id}/edit"
   end
