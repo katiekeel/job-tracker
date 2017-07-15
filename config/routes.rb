@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     resources :jobs do
       resources :comments, only: [:new, :create, :edit, :update, :destroy]
     end
+
+    resources :contacts, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :categories
+
 
 end
