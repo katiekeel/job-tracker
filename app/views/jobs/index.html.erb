@@ -23,7 +23,7 @@
     Name: <%= contact.name %><br/>
     Position: <%= contact.position %><br/>
     Email: <%= contact.email %><br/>
-    <%= link_to "Edit", edit_company_contact_path(@company, contact) %>  |  <%= link_to "Delete", company_contact_path(@company, contact), method: :delete %><br/>
+    <%= link_to "Edit", edit_company_contact_path(@company, contact) %>  |  <span class="contact"><%= link_to "Delete", company_contact_path(@company, contact), method: :delete %></span><br/>
   </li></br>
   <% end %>
 </ol>
