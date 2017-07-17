@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
 
   def index
+    # byebug
     if params[:company_id].nil? == false
       @company = Company.find(params[:company_id])
       @contacts = @company.contacts

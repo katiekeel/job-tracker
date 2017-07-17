@@ -13,7 +13,7 @@ class Job < ApplicationRecord
 
   def self.by_interest
     jobs = Job.all
-    jobs = jobs.group_by(&:level_of_interest).sort.reverse
+    jobs = jobs.group_by(&:level_of_interest).sort.reverse.to_h
     jobs
   end
 

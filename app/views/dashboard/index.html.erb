@@ -1,0 +1,29 @@
+<h2>Jobs by Interest Level</h2>
+  <ol>
+    <% @jobs_by_interest.each do |key, value| %>
+    <li>Job: <%= link_to "#{value.first.title}", company_job_path(value.first.company, value.first) %><br/>
+      Level of Interest: <%= key %>
+    </li><br/>
+  <% end %>
+</ol>
+
+<h2>Companies by Average Interest Level</h2>
+  <ol>
+    <% @companies_by_interest.each do |key, value| %>
+      <li>Company: <%= link_to "#{key.name}", company_jobs_path(key) %><br/>
+      Level of Interest: <%= value %><br/>
+    </li><br/>
+    <% end %>
+  </ol>
+
+<h2>Jobs by Location</h2>
+  <ol>
+    <% @jobs_by_location.each do |key, value| %>
+      <li><%= link_to "#{key}", "/jobs?location=#{key}" %></li>
+          <ul>
+            <% value.each do |job| %>
+            <%= link_to "#{job.title}", company_job_path(job.company, job) %></br>
+            <% end %>
+          </ul><br/>
+        <% end %>
+  </ol>

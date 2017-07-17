@@ -5,12 +5,12 @@ class Company < ApplicationRecord
 
 
   def self.top_three_by_interest
-    byebug
     companies = Company.all
-    companies = companies.each do |company|
-      company.jobs.group_by(&:level_of_interest)
+    new_companies = {}
+    companies.each do |company|
+      new_companies[company] = company.jobs.average(:level_of_interest).to_i
     end
-    companies
+    new_companies
   end
 
 end
