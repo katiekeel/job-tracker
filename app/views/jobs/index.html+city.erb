@@ -1,0 +1,5 @@
+<h2>Jobs in <%= @location %></h2>
+
+<% @jobs.each do |job| %>
+  <%= link_to "#{job.title}", company_job_path(job.company, job) %><br/>
+<% end %>

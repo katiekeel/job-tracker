@@ -1,0 +1,12 @@
+<h2>Jobs Sorted by Interest Level</h2>
+
+<ul>
+  <% @jobs.each do |key, value| %>
+  Level of Interest: <%= key %>
+    <ol>
+      <% value.each do |job| %>
+        <li><%= link_to "#{job.title}", company_job_path(job.company, job) %></li>
+      <% end %>
+    </ol><br/>
+  <% end %>
+</ul>
